@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TeremRogzites extends Controller
 {
@@ -40,5 +41,10 @@ class TeremRogzites extends Controller
             ]
 
         );
+
+        DB::insert("INSERT INTO termek (nev, szel_cm, hossz_cm, mag_cm) VALUES 
+        (?,?,?,?)",[$req->get("nev"),$req->get("szel_cm"),$req->get("hosz_cm"),$req->get("mag_cm")]);
+
+        
     }
 }

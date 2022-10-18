@@ -10,6 +10,7 @@
             <div class="col-12">
                 <div class="bg-primary p-3 rounded text-white">
                     <h1>Terem rögzítés</h1>
+                    
                     <form method="POST">
                         @csrf
                         <div class="my-3">
