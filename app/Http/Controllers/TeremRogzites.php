@@ -15,11 +15,28 @@ class TeremRogzites extends Controller
         $req->validate(
 
             [
-                "nev" => "required|min:3"
+                "nev" => "required|min:3",
+                "szel_cm" => "required|numeric|min:100|max:5000",
+                "hosz_cm" => "required|numeric|min:100|max:5000",
+                "mag_cm" => "required|numeric|min:100|max:400"
             ],
             [
                 "nev.required" => "A mező kitöltése kötelező",
-                "nev.min" => "Minimum 3 karaktert adj meg!"
+                "nev.min" => "Minimum 3 karaktert adj meg!",
+                "szel_cm.required" => "A mező kitöltése kötelező",
+                "szel_cm.numeric" => "Csak szám lehet",
+                "szel_cm.min" => "Minimum: 100",
+                "szel_cm.max" => "Maximum: 5000",
+
+                "hosz_cm.required" => "A mező kitöltése kötelező",
+                "hosz_cm.numeric" => "Csak szám lehet",
+                "hosz_cm.min" => "Minimum: 100",
+                "hosz_cm.max" => "Maximum: 5000",
+
+                "mag_cm.required" => "A mező kitöltése kötelező",
+                "mag_cm.numeric" => "Csak szám lehet",
+                "mag_cm.min" => "Minimum: 100",
+                "mag_cm.max" => "Maximum: 400",
             ]
 
         );
