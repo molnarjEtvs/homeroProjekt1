@@ -45,6 +45,7 @@ class TeremRogzites extends Controller
         DB::insert("INSERT INTO termek (nev, szel_cm, hossz_cm, mag_cm) VALUES 
         (?,?,?,?)",[$req->get("nev"),$req->get("szel_cm"),$req->get("hosz_cm"),$req->get("mag_cm")]);
 
-        
+        return redirect("/terem-rogzites")->with("success","A terem rögzítés sikeres");
+
     }
 }
