@@ -1,52 +1,33 @@
 @extends("layouts.master")
-
 @section("title","Főoldal")
-
 @section("content")
     @include("menu")
-    
     <div class="container mt-5">
         <div class="row">
-            <div class="col-3">
-                <div class="bg-success text-center text-white rounded p-3">
-                   <span class="display-4 fw-bold">18 &deg;C</span>
-                   <br>
-                   Labor 2
-                   <br>
-                   2022-10-25 11:50:32
-                </div>
-            </div>
+            @foreach ($aktualis as $egyMeres)
+                <div class="col-3">
 
-            <div class="col-3">
-                <div class="bg-success text-center text-white rounded p-3">
-                   <span class="display-4 fw-bold">17 &deg;C</span>
-                   <br>
-                   Labor 2
-                   <br>
-                   2022-10-25 11:50:32
-                </div>
-            </div>
+                   
 
-            <div class="col-3">
-                <div class="bg-danger text-center text-white rounded p-3">
-                   <span class="display-4 fw-bold">22 &deg;C</span>
-                   <br>
-                   306
-                   <br>
-                   2022-10-25 11:50:32
+                    <div class=" 
+                    
+                    @if($egyMeres->homerseklet<=15)
+                      bg-primary
+                    @elseif($egyMeres->homerseklet>15 && $egyMeres->homerseklet<=18)
+                      bg-success
+                    @else
+                      bg-danger
+                    @endif
+                    
+                    text-center text-white rounded p-3">
+                        <span class="display-4 fw-bold">{{$egyMeres->homerseklet}} &deg;C</span>
+                        <br>
+                        {{$egyMeres->nev}}
+                        <br>
+                        {{$egyMeres->datum_ido}}
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-3">
-                <div class="bg-primary text-center text-white rounded p-3">
-                   <span class="display-4 fw-bold">14 &deg;C</span>
-                   <br>
-                   305
-                   <br>
-                   2022-10-25 11:50:32
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
-
 @endsection
