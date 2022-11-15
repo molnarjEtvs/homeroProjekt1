@@ -48,4 +48,12 @@ class TeremRogzites extends Controller
         return redirect("/terem-rogzites")->with("success","A terem rögzítés sikeres");
 
     }
+
+    public function teremLista(){
+
+        $termek = DB::select("SELECT * FROM termek WHERE 1");
+    
+
+        return view("teremLista",["termek" => $termek]);
+    }
 }

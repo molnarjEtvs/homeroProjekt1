@@ -24,7 +24,6 @@ class Aktualis extends Controller
             ");
 
         
-
         return view("welcome",["aktualis" => $aktualis]);
     }
 }
