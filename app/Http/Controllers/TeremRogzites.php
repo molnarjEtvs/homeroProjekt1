@@ -44,16 +44,20 @@ class TeremRogzites extends Controller
 
         DB::insert("INSERT INTO termek (nev, szel_cm, hossz_cm, mag_cm) VALUES 
         (?,?,?,?)",[$req->get("nev"),$req->get("szel_cm"),$req->get("hosz_cm"),$req->get("mag_cm")]);
-
         return redirect("/terem-rogzites")->with("success","A terem rögzítés sikeres");
 
     }
 
     public function teremLista(){
-
         $termek = DB::select("SELECT * FROM termek WHERE 1");
-    
-
         return view("teremLista",["termek" => $termek]);
     }
+
+
+    public function teremTorles(Request $req){
+        DB::delete("DELETE FROM termek WHERE t_id=?",[$req->id]);
+        $data['error'] = false;
+        return response()->json($data);
+    }
+
 }

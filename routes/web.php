@@ -16,3 +16,4 @@ Route::get('/homerseklet-rogzites', [HomersekletRogzites::class,"getContent"]);
 Route::post("/homerseklet-rogzites",[HomersekletRogzites::class,"rogzites"]);
 
 Route::get('/terem-lista', [TeremRogzites::class,"teremLista"]);
+Route::post("/terem-torles",[TeremRogzites::class,"teremTorles"]);

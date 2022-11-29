@@ -20,7 +20,7 @@
                             <th>Törölés</th>
                         </tr>
                         @foreach ($termek as $item)
-                        <tr>
+                        <tr id="sor_{{ $item->t_id }}">
                             <td>{{ $item->t_id }}</td>
                             <td>{{ $item->nev }}</td>
                             <td>{{ $item->szel_cm }} cm</td>
@@ -31,7 +31,7 @@
                                 <button class="btn btn-primary btn-sm">M</button>
                             </td>
                             <td>
-                                <button class="btn btn-danger btn-sm">X</button>
+                                <button class="btn btn-danger btn-sm" onclick="teremTorles({{ $item->t_id }});" id="gomb_{{ $item->t_id }}">törlés</button>
                             </td>
                         </tr>  
                         @endforeach
@@ -41,4 +41,27 @@
             </div>
         </div>
     </div>
+
+<script>
+    function teremTorles(id){
+        $.ajax({
+            url:"./terem-torles",
+            type:"POST",
+            headers:{
+                "X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")
+            },
+            data:{"id":id},
+            cache:false,
+            async:false,
+            dataType:'json',
+            beforeSend:function(){
+                $("#gomb_"+id).attr("disabled",true);
+            },
+            success:function(){
+                $("#sor_"+id).remove();
+            }
+
+        });
+    }
+</script>
 @endsection
